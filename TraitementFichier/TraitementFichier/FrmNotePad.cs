@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ *  Author      : Squibbles
+ *  Description : Little notepad which can be put in the foreground
+ *  Date        : 08.08.2016
+ *  Version     : 1.0
+ */
+
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -6,9 +13,9 @@ using System.IO;
 
 namespace TraitementFichier
 {
-    public partial class FrmMonBlocNotes : Form
+    public partial class FrmNotePad : Form
     {
-        #region Champs
+        #region Fields
         private SaveFileDialog saveDlg;
         private OpenFileDialog openDlg;
         private FontDialog fontDialog;
@@ -17,7 +24,55 @@ namespace TraitementFichier
         private bool foreground;
         #endregion
 
-        #region Propriétés
+        #region Properties
+        /// <summary>
+        /// Get or set the save dialog
+        /// </summary>
+        public SaveFileDialog SaveDlg
+        {
+            get { return saveDlg; }
+            set { saveDlg = value; }
+        }
+
+        /// <summary>
+        /// Get or set the open dialog
+        /// </summary>
+        public OpenFileDialog OpenDlg
+        {
+            get { return openDlg; }
+            set { openDlg = value; }
+        }
+
+        /// <summary>
+        /// Get or set the font dialog
+        /// </summary>
+        public FontDialog FontDialog
+        {
+            get { return fontDialog; }
+            set { fontDialog = value; }
+        }
+
+        /// <summary>
+        /// Get or set the color dialog
+        /// </summary>
+        public ColorDialog ColorDlg
+        {
+            get { return colorDlg; }
+            set { colorDlg = value; }
+        }
+
+        /// <summary>
+        /// Get or set the filename
+        /// </summary>
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; }
+        }
+
+        /// <summary>
+        /// Get or set the foreground
+        /// </summary>
         public bool Foreground
         {
             get { return foreground; }
@@ -25,46 +80,59 @@ namespace TraitementFichier
         }
         #endregion
 
-        #region Constantes
+        #region Const
         private const string FILTER_EXT = "Text files (*.txt)|*.txt|C# files (*.cs)|*.cs|All files (*.*)|*.*";
         #endregion
 
-        public FrmMonBlocNotes()
+        public FrmNotePad()
         {
             InitializeComponent();
-            this.fileName = null;
+            this.FileName = null;
             this.Foreground = false;
             this.InitDialog();
         }
 
+        /// <summary>
+        /// Initialise all dialog which are necessary
+        /// </summary>
         private void InitDialog()
         {
-            this.saveDlg = new SaveFileDialog();
-            this.saveDlg.Title = "Enregistrer sous ...";
-            this.saveDlg.DefaultExt = "txt";
-            this.saveDlg.Filter = FILTER_EXT;
-            this.saveDlg.OverwritePrompt = true;
+            // Initialize the save dialog
+            this.SaveDlg = new SaveFileDialog();
+            this.SaveDlg.Title = "Enregistrer sous ...";
+            this.SaveDlg.DefaultExt = "txt";
+            this.SaveDlg.Filter = FILTER_EXT;
+            this.SaveDlg.OverwritePrompt = true;
 
-            this.openDlg = new OpenFileDialog();
-            this.openDlg.Title = "Ovrir le fichier ...";
-            this.openDlg.Filter = FILTER_EXT;
+            // Initialize the open dialog
+            this.OpenDlg = new OpenFileDialog();
+            this.OpenDlg.Title = "Ovrir le fichier ...";
+            this.OpenDlg.Filter = FILTER_EXT;
 
-            this.fontDialog = new FontDialog();
-            this.fontDialog.ShowColor = true;
+            // Initialize the font dialog
+            this.FontDialog = new FontDialog();
+            this.FontDialog.ShowColor = true;
 
-            this.colorDlg = new ColorDialog();
-            this.colorDlg.AllowFullOpen = true;
+            // Initialize the color dialog
+            this.ColorDlg = new ColorDialog();
+            this.ColorDlg.AllowFullOpen = true;
         }
 
-        private void AfficherText()
+        /// <summary>
+        /// Show the text which from an externe file
+        /// </summary>
+        private void ShowText()
         {
             TbxText.Clear();
-            TbxText.Text = File.ReadAllText(this.fileName);
+            TbxText.Text = File.ReadAllText(this.FileName);
         }
 
+        /// <summary>
+        /// Save all text in the file
+        /// </summary>
         private void SaveFile()
         {
-            StreamWriter sw = new StreamWriter(this.fileName, false, Encoding.Unicode);
+            StreamWriter sw = new StreamWriter(this.FileName, false, Encoding.Unicode);
 
             foreach (string line in TbxText.Lines)
                 sw.WriteLine(line);
@@ -79,7 +147,7 @@ namespace TraitementFichier
             if (res != DialogResult.Cancel)
             {
                 this.fileName = openDlg.FileName;
-                this.AfficherText();
+                this.ShowText();
             }
         }
 
@@ -152,20 +220,20 @@ namespace TraitementFichier
             }
         }
 
-        private void TSMIPremierPlan_Click(object sender, EventArgs e)
-        {
-            this.Foreground = !this.Foreground;
-        }
-
         /// <summary>
-        /// Change le statut du premier plan.
+        /// Change forground state
         /// </summary>
-        /// <param name="val">Indique si le premier plan doit être activé ou désactivé</param>
+        /// <param name="val">True if the windows must be forgrounded. False if doesn't it</param>
         private void ChangeStateForeground(bool val)
         {
             TSSLStatusPp.Text = (val) ? "Premier plan : activé" : "Premier plan : désactivé";
             this.TopMost = val;
-            this.foreground = val;
+            this.Foreground = val;
+        }
+
+        private void premierPlanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Foreground = !this.Foreground;
         }
     }
 }

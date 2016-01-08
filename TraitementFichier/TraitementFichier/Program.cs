@@ -16,7 +16,7 @@ namespace TraitementFichier
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMonBlocNotes());
+            Application.Run(new FrmNotePad());
         }
     }
 }
