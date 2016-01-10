@@ -31,22 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNotePad));
             this.TbxText = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.TSMIFichier = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIOuvrir = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMINew = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSMISauvegarder = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMISauvegarderSous = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMISave = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMISaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSMIQuitter = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMOptions = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIPolice = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIApparence = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIFont = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAppearance = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSMIPremierPlan = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIForeground = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.TSSLNombresLignes = new System.Windows.Forms.ToolStripStatusLabel();
-            this.TSSLStatusPp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TSSLNumbresLines = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TSSLStatuForeground = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,9 +74,9 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMIFichier,
-            this.TSMOptions,
-            this.toolStripMenuItem4});
+            this.TSMIFile,
+            this.TSMSettings,
+            this.TSMHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -82,143 +84,163 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // TSMIFichier
+            // TSMIFile
             // 
-            this.TSMIFichier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMIOuvrir,
+            this.TSMIFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMINew,
+            this.TSMIOpen,
             this.toolStripMenuItem2,
-            this.TSMISauvegarder,
-            this.TSMISauvegarderSous,
+            this.TSMISave,
+            this.TSMISaveAs,
             this.toolStripMenuItem1,
-            this.TSMIQuitter});
-            this.TSMIFichier.Name = "TSMIFichier";
-            this.TSMIFichier.Size = new System.Drawing.Size(64, 24);
-            this.TSMIFichier.Text = "&Fichier";
+            this.TSMIQuit});
+            this.TSMIFile.Name = "TSMIFile";
+            this.TSMIFile.Size = new System.Drawing.Size(64, 24);
+            this.TSMIFile.Text = "&Fichier";
             // 
-            // TSMIOuvrir
+            // TSMINew
             // 
-            this.TSMIOuvrir.Image = global::TraitementFichier.Properties.Resources.page;
-            this.TSMIOuvrir.Name = "TSMIOuvrir";
-            this.TSMIOuvrir.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.TSMIOuvrir.Size = new System.Drawing.Size(286, 26);
-            this.TSMIOuvrir.Text = "&Ouvrir ...";
-            this.TSMIOuvrir.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
+            this.TSMINew.Image = global::TraitementFichier.Properties.Resources.document_empty;
+            this.TSMINew.Name = "TSMINew";
+            this.TSMINew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.TSMINew.Size = new System.Drawing.Size(286, 26);
+            this.TSMINew.Text = "&Nouveau";
+            this.TSMINew.Click += new System.EventHandler(this.TSMINew_Click);
+            // 
+            // TSMIOpen
+            // 
+            this.TSMIOpen.Image = global::TraitementFichier.Properties.Resources.page;
+            this.TSMIOpen.Name = "TSMIOpen";
+            this.TSMIOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.TSMIOpen.Size = new System.Drawing.Size(286, 26);
+            this.TSMIOpen.Text = "&Ouvrir ...";
+            this.TSMIOpen.Click += new System.EventHandler(this.TSMIOpen_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(283, 6);
             // 
-            // TSMISauvegarder
+            // TSMISave
             // 
-            this.TSMISauvegarder.Image = global::TraitementFichier.Properties.Resources.page_save;
-            this.TSMISauvegarder.Name = "TSMISauvegarder";
-            this.TSMISauvegarder.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.TSMISauvegarder.Size = new System.Drawing.Size(286, 26);
-            this.TSMISauvegarder.Text = "&Enregistrer";
-            this.TSMISauvegarder.Click += new System.EventHandler(this.sauvegarderToolStripMenuItem_Click);
+            this.TSMISave.Image = global::TraitementFichier.Properties.Resources.page_save;
+            this.TSMISave.Name = "TSMISave";
+            this.TSMISave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.TSMISave.Size = new System.Drawing.Size(286, 26);
+            this.TSMISave.Text = "&Enregistrer";
+            this.TSMISave.Click += new System.EventHandler(this.TSMISave_Click);
             // 
-            // TSMISauvegarderSous
+            // TSMISaveAs
             // 
-            this.TSMISauvegarderSous.Image = global::TraitementFichier.Properties.Resources.save_as;
-            this.TSMISauvegarderSous.Name = "TSMISauvegarderSous";
-            this.TSMISauvegarderSous.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.TSMISaveAs.Image = global::TraitementFichier.Properties.Resources.save_as;
+            this.TSMISaveAs.Name = "TSMISaveAs";
+            this.TSMISaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.TSMISauvegarderSous.Size = new System.Drawing.Size(286, 26);
-            this.TSMISauvegarderSous.Text = "Enregistrer sous ...";
-            this.TSMISauvegarderSous.Click += new System.EventHandler(this.sauvegarderSousToolStripMenuItem_Click);
+            this.TSMISaveAs.Size = new System.Drawing.Size(286, 26);
+            this.TSMISaveAs.Text = "Enregistrer sous ...";
+            this.TSMISaveAs.Click += new System.EventHandler(this.TSMISaveAs_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(283, 6);
             // 
-            // TSMIQuitter
+            // TSMIQuit
             // 
-            this.TSMIQuitter.Image = ((System.Drawing.Image)(resources.GetObject("TSMIQuitter.Image")));
-            this.TSMIQuitter.Name = "TSMIQuitter";
-            this.TSMIQuitter.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.TSMIQuitter.Size = new System.Drawing.Size(286, 26);
-            this.TSMIQuitter.Text = "&Quitter";
-            this.TSMIQuitter.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            this.TSMIQuit.Image = ((System.Drawing.Image)(resources.GetObject("TSMIQuit.Image")));
+            this.TSMIQuit.Name = "TSMIQuit";
+            this.TSMIQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.TSMIQuit.Size = new System.Drawing.Size(286, 26);
+            this.TSMIQuit.Text = "&Quitter";
+            this.TSMIQuit.Click += new System.EventHandler(this.TSMIQuit_Click);
             // 
-            // TSMOptions
+            // TSMSettings
             // 
-            this.TSMOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMIPolice,
-            this.TSMIApparence,
+            this.TSMSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIFont,
+            this.TSMIAppearance,
             this.toolStripMenuItem3,
-            this.TSMIPremierPlan});
-            this.TSMOptions.Name = "TSMOptions";
-            this.TSMOptions.Size = new System.Drawing.Size(73, 24);
-            this.TSMOptions.Text = "O&ptions";
+            this.TSMIForeground});
+            this.TSMSettings.Name = "TSMSettings";
+            this.TSMSettings.Size = new System.Drawing.Size(73, 24);
+            this.TSMSettings.Text = "O&ptions";
             // 
-            // TSMIPolice
+            // TSMIFont
             // 
-            this.TSMIPolice.Image = global::TraitementFichier.Properties.Resources.font;
-            this.TSMIPolice.Name = "TSMIPolice";
-            this.TSMIPolice.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.TSMIPolice.Size = new System.Drawing.Size(218, 26);
-            this.TSMIPolice.Text = "&Police";
-            this.TSMIPolice.Click += new System.EventHandler(this.policeToolStripMenuItem_Click);
+            this.TSMIFont.Image = global::TraitementFichier.Properties.Resources.font;
+            this.TSMIFont.Name = "TSMIFont";
+            this.TSMIFont.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.TSMIFont.Size = new System.Drawing.Size(221, 26);
+            this.TSMIFont.Text = "&Police ...";
+            this.TSMIFont.Click += new System.EventHandler(this.TSMIFont_Click);
             // 
-            // TSMIApparence
+            // TSMIAppearance
             // 
-            this.TSMIApparence.Image = global::TraitementFichier.Properties.Resources.application_edit;
-            this.TSMIApparence.Name = "TSMIApparence";
-            this.TSMIApparence.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.TSMIApparence.Size = new System.Drawing.Size(218, 26);
-            this.TSMIApparence.Text = "&Apparence";
-            this.TSMIApparence.Click += new System.EventHandler(this.apparenceToolStripMenuItem_Click);
+            this.TSMIAppearance.Image = global::TraitementFichier.Properties.Resources.application_edit;
+            this.TSMIAppearance.Name = "TSMIAppearance";
+            this.TSMIAppearance.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.TSMIAppearance.Size = new System.Drawing.Size(221, 26);
+            this.TSMIAppearance.Text = "&Apparence ...";
+            this.TSMIAppearance.Click += new System.EventHandler(this.TSMIAppearance_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(215, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(218, 6);
             // 
-            // TSMIPremierPlan
+            // TSMIForeground
             // 
-            this.TSMIPremierPlan.CheckOnClick = true;
-            this.TSMIPremierPlan.Image = global::TraitementFichier.Properties.Resources.application_double;
-            this.TSMIPremierPlan.Name = "TSMIPremierPlan";
-            this.TSMIPremierPlan.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.TSMIPremierPlan.Size = new System.Drawing.Size(218, 26);
-            this.TSMIPremierPlan.Text = "P&remier plan";
-            this.TSMIPremierPlan.Click += new System.EventHandler(this.premierPlanToolStripMenuItem_Click);
+            this.TSMIForeground.CheckOnClick = true;
+            this.TSMIForeground.Image = global::TraitementFichier.Properties.Resources.application_double;
+            this.TSMIForeground.Name = "TSMIForeground";
+            this.TSMIForeground.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.TSMIForeground.Size = new System.Drawing.Size(221, 26);
+            this.TSMIForeground.Text = "P&remier plan";
+            this.TSMIForeground.Click += new System.EventHandler(this.TSMIForeground_Click);
             // 
-            // toolStripMenuItem4
+            // TSMHelp
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(28, 24);
-            this.toolStripMenuItem4.Text = "?";
+            this.TSMHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIAbout});
+            this.TSMHelp.Name = "TSMHelp";
+            this.TSMHelp.Size = new System.Drawing.Size(28, 24);
+            this.TSMHelp.Text = "&?";
+            // 
+            // TSMIAbout
+            // 
+            this.TSMIAbout.Image = global::TraitementFichier.Properties.Resources.information;
+            this.TSMIAbout.Name = "TSMIAbout";
+            this.TSMIAbout.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.TSMIAbout.Size = new System.Drawing.Size(230, 26);
+            this.TSMIAbout.Text = "A propos &de ...";
+            this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSSLNombresLignes,
-            this.TSSLStatusPp});
+            this.TSSLNumbresLines,
+            this.TSSLStatuForeground});
             this.statusStrip1.Location = new System.Drawing.Point(0, 490);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(826, 25);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // TSSLNombresLignes
+            // TSSLNumbresLines
             // 
-            this.TSSLNombresLignes.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.TSSLNombresLignes.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.TSSLNombresLignes.Name = "TSSLNombresLignes";
-            this.TSSLNombresLignes.Size = new System.Drawing.Size(70, 20);
-            this.TSSLNombresLignes.Text = "Lignes : 0";
-            this.TSSLNombresLignes.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            this.TSSLNumbresLines.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.TSSLNumbresLines.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.TSSLNumbresLines.Name = "TSSLNumbresLines";
+            this.TSSLNumbresLines.Size = new System.Drawing.Size(70, 20);
+            this.TSSLNumbresLines.Text = "Lignes : 0";
             // 
-            // TSSLStatusPp
+            // TSSLStatuForeground
             // 
-            this.TSSLStatusPp.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.TSSLStatusPp.Name = "TSSLStatusPp";
-            this.TSSLStatusPp.Size = new System.Drawing.Size(135, 20);
-            this.TSSLStatusPp.Text = "Premier plan : false";
+            this.TSSLStatuForeground.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.TSSLStatuForeground.Name = "TSSLStatuForeground";
+            this.TSSLStatuForeground.Size = new System.Drawing.Size(135, 20);
+            this.TSSLStatuForeground.Text = "Premier plan : false";
             // 
             // FrmNotePad
             // 
@@ -248,22 +270,24 @@
 
         private System.Windows.Forms.TextBox TbxText;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem TSMIFichier;
-        private System.Windows.Forms.ToolStripMenuItem TSMIOuvrir;
-        private System.Windows.Forms.ToolStripMenuItem TSMISauvegarderSous;
+        private System.Windows.Forms.ToolStripMenuItem TSMIFile;
+        private System.Windows.Forms.ToolStripMenuItem TSMIOpen;
+        private System.Windows.Forms.ToolStripMenuItem TSMISaveAs;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel TSSLNombresLignes;
+        private System.Windows.Forms.ToolStripStatusLabel TSSLNumbresLines;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem TSMIQuitter;
+        private System.Windows.Forms.ToolStripMenuItem TSMIQuit;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem TSMISauvegarder;
-        private System.Windows.Forms.ToolStripMenuItem TSMOptions;
-        private System.Windows.Forms.ToolStripMenuItem TSMIPolice;
-        private System.Windows.Forms.ToolStripMenuItem TSMIApparence;
-        private System.Windows.Forms.ToolStripStatusLabel TSSLStatusPp;
-        private System.Windows.Forms.ToolStripMenuItem TSMIPremierPlan;
+        private System.Windows.Forms.ToolStripMenuItem TSMISave;
+        private System.Windows.Forms.ToolStripMenuItem TSMSettings;
+        private System.Windows.Forms.ToolStripMenuItem TSMIFont;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAppearance;
+        private System.Windows.Forms.ToolStripStatusLabel TSSLStatuForeground;
+        private System.Windows.Forms.ToolStripMenuItem TSMIForeground;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem TSMHelp;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAbout;
+        private System.Windows.Forms.ToolStripMenuItem TSMINew;
     }
 }
 

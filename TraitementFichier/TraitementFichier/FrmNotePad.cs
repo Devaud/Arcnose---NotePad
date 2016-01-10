@@ -20,6 +20,7 @@ namespace TraitementFichier
         private OpenFileDialog openDlg;
         private FontDialog fontDialog;
         private ColorDialog colorDlg;
+        private AboutBox abx;
         private string fileName;
         private bool foreground;
         #endregion
@@ -92,6 +93,7 @@ namespace TraitementFichier
             this.InitDialog();
         }
 
+        #region Personnal Method
         /// <summary>
         /// Initialise all dialog which are necessary
         /// </summary>
@@ -116,6 +118,9 @@ namespace TraitementFichier
             // Initialize the color dialog
             this.ColorDlg = new ColorDialog();
             this.ColorDlg.AllowFullOpen = true;
+
+            // Initialize the about box
+            this.abx = new AboutBox();
         }
 
         /// <summary>
@@ -140,18 +145,30 @@ namespace TraitementFichier
             sw.Close();
         }
 
-        private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Change forground state
+        /// </summary>
+        /// <param name="val">True if the windows must be forgrounded. False if doesn't it</param>
+        private void ChangeStateForeground(bool val)
         {
-            DialogResult res = this.openDlg.ShowDialog();
+            TSSLStatuForeground.Text = (val) ? "Premier plan : activé" : "Premier plan : désactivé";
+            this.TopMost = val;
+            this.foreground = val;
+        }
+        #endregion
+
+        private void TSMIOpen_Click(object sender, EventArgs e)
+        {
+            DialogResult res = this.OpenDlg.ShowDialog();
 
             if (res != DialogResult.Cancel)
             {
-                this.fileName = openDlg.FileName;
+                this.FileName = this.OpenDlg.FileName;
                 this.ShowText();
             }
         }
 
-        private void sauvegarderSousToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMISaveAs_Click(object sender, EventArgs e)
         {
             DialogResult res = saveDlg.ShowDialog();
 
@@ -162,31 +179,26 @@ namespace TraitementFichier
             }
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TbxText_TextChanged(object sender, EventArgs e)
         {
-            this.TSSLNombresLignes.Text = "Lignes : " + TbxText.Lines.Count<string>().ToString();
+            this.TSSLNumbresLines.Text = "Lignes : " + TbxText.Lines.Count<string>().ToString();
         }
 
-        private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMISave_Click(object sender, EventArgs e)
         {
-            if (this.fileName != "" && this.fileName != null)
+            if (this.FileName != "" && this.FileName != null)
             {
                 this.SaveFile();
             }
             else
             {
-                this.sauvegarderSousToolStripMenuItem_Click(sender, e);
+                this.TSMISaveAs_Click(sender, e);
             }
         }
 
-        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMIQuit_Click(object sender, EventArgs e)
         {
-            if (this.fileName != "" && this.fileName != null)
+            if (this.FileName != "" && this.FileName != null)
             {
                 this.SaveFile();
             }
@@ -194,46 +206,46 @@ namespace TraitementFichier
             Application.Exit();
         }
 
-        private void policeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMIFont_Click(object sender, EventArgs e)
         {
-            this.fontDialog.Font = this.TbxText.Font;
-            DialogResult res = this.fontDialog.ShowDialog();
+            this.FontDialog.Font = this.TbxText.Font;
+            DialogResult res = this.FontDialog.ShowDialog();
 
             if (res != DialogResult.Cancel)
             {
-                this.TbxText.Font = this.fontDialog.Font;
-                this.TbxText.ForeColor = this.fontDialog.Color;
+                this.TbxText.Font = this.FontDialog.Font;
+                this.TbxText.ForeColor = this.FontDialog.Color;
             }
         }
 
-        private void apparenceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMINew_Click(object sender, EventArgs e)
         {
-
-            this.colorDlg.Color = this.TbxText.BackColor;
-
-            DialogResult res = this.colorDlg.ShowDialog();
-
-            if (res != DialogResult.Cancel)
-            {
-                this.TbxText.BackColor = this.colorDlg.Color;
-                this.BackColor = this.colorDlg.Color;
-            }
+            this.FileName = null;
+            this.TbxText.Clear();
         }
 
-        /// <summary>
-        /// Change forground state
-        /// </summary>
-        /// <param name="val">True if the windows must be forgrounded. False if doesn't it</param>
-        private void ChangeStateForeground(bool val)
+        private void TSMIAbout_Click(object sender, EventArgs e)
         {
-            TSSLStatusPp.Text = (val) ? "Premier plan : activé" : "Premier plan : désactivé";
-            this.TopMost = val;
-            this.Foreground = val;
+            AboutBox abx = new AboutBox();
+            abx.ShowDialog();
         }
 
-        private void premierPlanToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSMIForeground_Click(object sender, EventArgs e)
         {
             this.Foreground = !this.Foreground;
+        }
+
+        private void TSMIAppearance_Click(object sender, EventArgs e)
+        {
+            this.ColorDlg.Color = this.TbxText.BackColor;
+
+            DialogResult res = this.ColorDlg.ShowDialog();
+
+            if (res != DialogResult.Cancel)
+            {
+                this.TbxText.BackColor = this.ColorDlg.Color;
+                this.BackColor = this.ColorDlg.Color;
+            }
         }
     }
 }

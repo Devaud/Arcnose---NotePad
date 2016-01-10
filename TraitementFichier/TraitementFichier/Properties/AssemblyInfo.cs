@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("Arcnose - NotePad")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Petit notepad pouvant être mis en premier plan")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arcnose")]
 [assembly: AssemblyProduct("Arcnose - NotePad")]
