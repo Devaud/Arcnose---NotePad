@@ -21,7 +21,7 @@ namespace TraitementFichier
         private FontDialog fontDialog;
         private ColorDialog colorDlg;
         private AboutBox abx;
-        private string fileName;
+        private string filename;
         private bool foreground;
         #endregion
 
@@ -65,10 +65,10 @@ namespace TraitementFichier
         /// <summary>
         /// Get or set the filename
         /// </summary>
-        public string FileName
+        public string Filename
         {
-            get { return fileName; }
-            set { fileName = value; }
+            get { return filename; }
+            set { filename = value; }
         }
 
         /// <summary>
@@ -88,9 +88,21 @@ namespace TraitementFichier
         public FrmNotePad()
         {
             InitializeComponent();
-            this.FileName = null;
+            // Get the parameters past during the command execute
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length >= 2)
+            {
+                if (args[1] != "")
+                    this.Filename = args[1];
+            }
+
             this.Foreground = false;
             this.InitDialog();
+
+            if (this.Filename != "" && args.Length == 2)
+            {
+                this.ShowText();
+            }
         }
 
         #region Personnal Method
@@ -129,7 +141,7 @@ namespace TraitementFichier
         private void ShowText()
         {
             TbxText.Clear();
-            TbxText.Text = File.ReadAllText(this.FileName);
+            TbxText.Text = File.ReadAllText(this.Filename);
         }
 
         /// <summary>
@@ -137,7 +149,7 @@ namespace TraitementFichier
         /// </summary>
         private void SaveFile()
         {
-            StreamWriter sw = new StreamWriter(this.FileName, false, Encoding.Unicode);
+            StreamWriter sw = new StreamWriter(this.Filename, false, Encoding.Unicode);
 
             foreach (string line in TbxText.Lines)
                 sw.WriteLine(line);
@@ -163,7 +175,7 @@ namespace TraitementFichier
 
             if (res != DialogResult.Cancel)
             {
-                this.FileName = this.OpenDlg.FileName;
+                this.Filename = this.OpenDlg.FileName;
                 this.ShowText();
             }
         }
@@ -174,7 +186,7 @@ namespace TraitementFichier
 
             if (res != DialogResult.Cancel)
             {
-                this.fileName = saveDlg.FileName;
+                this.filename = saveDlg.FileName;
                 this.SaveFile();
             }
         }
@@ -186,7 +198,7 @@ namespace TraitementFichier
 
         private void TSMISave_Click(object sender, EventArgs e)
         {
-            if (this.FileName != "" && this.FileName != null)
+            if (this.Filename != "" && this.Filename != null)
             {
                 this.SaveFile();
             }
@@ -198,7 +210,7 @@ namespace TraitementFichier
 
         private void TSMIQuit_Click(object sender, EventArgs e)
         {
-            if (this.FileName != "" && this.FileName != null)
+            if (this.Filename != "" && this.Filename != null)
             {
                 this.SaveFile();
             }
@@ -220,7 +232,7 @@ namespace TraitementFichier
 
         private void TSMINew_Click(object sender, EventArgs e)
         {
-            this.FileName = null;
+            this.Filename = null;
             this.TbxText.Clear();
         }
 

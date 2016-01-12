@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNotePad));
             this.TbxText = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.Menu = new System.Windows.Forms.MenuStrip();
             this.TSMIFile = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMINew = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,18 +46,16 @@
             this.TSMIForeground = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.SSInformations = new System.Windows.Forms.StatusStrip();
             this.TSSLNumbresLines = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSSLStatuForeground = new System.Windows.Forms.ToolStripStatusLabel();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.Menu.SuspendLayout();
+            this.SSInformations.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbxText
             // 
-            this.TbxText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TbxText.AcceptsTab = true;
             this.TbxText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TbxText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbxText.Location = new System.Drawing.Point(13, 32);
@@ -70,19 +68,19 @@
             this.TbxText.TabIndex = 0;
             this.TbxText.TextChanged += new System.EventHandler(this.TbxText_TextChanged);
             // 
-            // menuStrip1
+            // Menu
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMIFile,
             this.TSMSettings,
             this.TSMHelp});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(826, 28);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Name = "Menu";
+            this.Menu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.Menu.Size = new System.Drawing.Size(826, 28);
+            this.Menu.TabIndex = 3;
+            this.Menu.Text = "menuStrip1";
             // 
             // TSMIFile
             // 
@@ -215,17 +213,17 @@
             this.TSMIAbout.Text = "A propos &de ...";
             this.TSMIAbout.Click += new System.EventHandler(this.TSMIAbout_Click);
             // 
-            // statusStrip1
+            // SSInformations
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SSInformations.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.SSInformations.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSSLNumbresLines,
             this.TSSLStatuForeground});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 490);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(826, 25);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
+            this.SSInformations.Location = new System.Drawing.Point(0, 490);
+            this.SSInformations.Name = "SSInformations";
+            this.SSInformations.Size = new System.Drawing.Size(826, 25);
+            this.SSInformations.TabIndex = 4;
+            this.SSInformations.Text = "statusStrip1";
             // 
             // TSSLNumbresLines
             // 
@@ -248,19 +246,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(826, 515);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.SSInformations);
             this.Controls.Add(this.TbxText);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.Menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.Menu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmNotePad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Arcnose - NotePad";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.Menu.ResumeLayout(false);
+            this.Menu.PerformLayout();
+            this.SSInformations.ResumeLayout(false);
+            this.SSInformations.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,11 +267,11 @@
         #endregion
 
         private System.Windows.Forms.TextBox TbxText;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem TSMIFile;
         private System.Windows.Forms.ToolStripMenuItem TSMIOpen;
         private System.Windows.Forms.ToolStripMenuItem TSMISaveAs;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip SSInformations;
         private System.Windows.Forms.ToolStripStatusLabel TSSLNumbresLines;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem TSMIQuit;
