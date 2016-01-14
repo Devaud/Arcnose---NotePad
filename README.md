@@ -3,6 +3,9 @@ Simple logiciel notepad pour windows qui a la particularité de mettre la fenêt
 
 ## Patch note
 
+### Version 1.2 - 14.01.2016
+- Renommage de tout le projet
+
 ### Version 1.1 - 12.01.2016
 - Ouverture des fichiers par ligne de commande
 - Bouton pour créer un nouveau fichier
