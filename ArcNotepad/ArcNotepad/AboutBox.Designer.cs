@@ -1,4 +1,4 @@
-﻿namespace TraitementFichier
+﻿namespace ArcNotepad
 {
     partial class AboutBox
     {

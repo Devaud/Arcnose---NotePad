@@ -2,7 +2,7 @@
  *  Author      : Squibbles
  *  Description : Little notepad which can be put in the foreground
  *  Date        : 08.08.2016
- *  Version     : 1.0
+ *  Version     : 1.1
  */
 
 using System;
@@ -11,18 +11,18 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace TraitementFichier
+namespace ArcNotepad
 {
-    public partial class FrmNotePad : Form
+    public partial class FrmArcNotepad : Form
     {
         #region Fields
-        private SaveFileDialog saveDlg;
-        private OpenFileDialog openDlg;
-        private FontDialog fontDialog;
-        private ColorDialog colorDlg;
-        private AboutBox abx;
-        private string filename;
-        private bool foreground;
+        private SaveFileDialog _saveDlg;
+        private OpenFileDialog _openDlg;
+        private FontDialog _fontDialog;
+        private ColorDialog _colorDlg;
+        private AboutBox _abx;
+        private string _filename;
+        private bool _foreground;
         #endregion
 
         #region Properties
@@ -31,8 +31,8 @@ namespace TraitementFichier
         /// </summary>
         public SaveFileDialog SaveDlg
         {
-            get { return saveDlg; }
-            set { saveDlg = value; }
+            get { return _saveDlg; }
+            set { _saveDlg = value; }
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace TraitementFichier
         /// </summary>
         public OpenFileDialog OpenDlg
         {
-            get { return openDlg; }
-            set { openDlg = value; }
+            get { return _openDlg; }
+            set { _openDlg = value; }
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace TraitementFichier
         /// </summary>
         public FontDialog FontDialog
         {
-            get { return fontDialog; }
-            set { fontDialog = value; }
+            get { return _fontDialog; }
+            set { _fontDialog = value; }
         }
 
         /// <summary>
@@ -58,8 +58,8 @@ namespace TraitementFichier
         /// </summary>
         public ColorDialog ColorDlg
         {
-            get { return colorDlg; }
-            set { colorDlg = value; }
+            get { return _colorDlg; }
+            set { _colorDlg = value; }
         }
 
         /// <summary>
@@ -67,8 +67,8 @@ namespace TraitementFichier
         /// </summary>
         public string Filename
         {
-            get { return filename; }
-            set { filename = value; }
+            get { return _filename; }
+            set { _filename = value; }
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace TraitementFichier
         /// </summary>
         public bool Foreground
         {
-            get { return foreground; }
+            get { return _foreground; }
             set { this.ChangeStateForeground(value); }
         }
         #endregion
@@ -85,25 +85,27 @@ namespace TraitementFichier
         private const string FILTER_EXT = "Text files (*.txt)|*.txt|C# files (*.cs)|*.cs|All files (*.*)|*.*";
         #endregion
 
-        public FrmNotePad()
+        #region Constructor
+        public FrmArcNotepad()
         {
             InitializeComponent();
-            // Get the parameters past during the command execute
+            this.Foreground = false;
+            this.InitDialog();
+
+            // Get the parameters which past during the command execute
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length >= 2)
             {
                 if (args[1] != "")
+                {
                     this.Filename = args[1];
-            }
-
-            this.Foreground = false;
-            this.InitDialog();
-
-            if (this.Filename != "" && args.Length == 2)
-            {
-                this.ShowText();
+                    this.ShowText();
+                    this.TBXText.Select(0, 0);
+                }
+                    
             }
         }
+        #endregion
 
         #region Personnal Method
         /// <summary>
@@ -132,7 +134,7 @@ namespace TraitementFichier
             this.ColorDlg.AllowFullOpen = true;
 
             // Initialize the about box
-            this.abx = new AboutBox();
+            this._abx = new AboutBox();
         }
 
         /// <summary>
@@ -140,8 +142,8 @@ namespace TraitementFichier
         /// </summary>
         private void ShowText()
         {
-            TbxText.Clear();
-            TbxText.Text = File.ReadAllText(this.Filename);
+            TBXText.Clear();
+            TBXText.Text = File.ReadAllText(this.Filename);
         }
 
         /// <summary>
@@ -151,7 +153,7 @@ namespace TraitementFichier
         {
             StreamWriter sw = new StreamWriter(this.Filename, false, Encoding.Unicode);
 
-            foreach (string line in TbxText.Lines)
+            foreach (string line in TBXText.Lines)
                 sw.WriteLine(line);
 
             sw.Close();
@@ -165,7 +167,7 @@ namespace TraitementFichier
         {
             TSSLStatuForeground.Text = (val) ? "Premier plan : activé" : "Premier plan : désactivé";
             this.TopMost = val;
-            this.foreground = val;
+            this._foreground = val;
         }
         #endregion
 
@@ -182,18 +184,18 @@ namespace TraitementFichier
 
         private void TSMISaveAs_Click(object sender, EventArgs e)
         {
-            DialogResult res = saveDlg.ShowDialog();
+            DialogResult res = _saveDlg.ShowDialog();
 
             if (res != DialogResult.Cancel)
             {
-                this.filename = saveDlg.FileName;
+                this.Filename = _saveDlg.FileName;
                 this.SaveFile();
             }
         }
 
-        private void TbxText_TextChanged(object sender, EventArgs e)
+        private void TBXText_TextChanged(object sender, EventArgs e)
         {
-            this.TSSLNumbresLines.Text = "Lignes : " + TbxText.Lines.Count<string>().ToString();
+            this.TSSLNumbresLines.Text = "Lignes : " + TBXText.Lines.Count<string>().ToString();
         }
 
         private void TSMISave_Click(object sender, EventArgs e)
@@ -220,20 +222,20 @@ namespace TraitementFichier
 
         private void TSMIFont_Click(object sender, EventArgs e)
         {
-            this.FontDialog.Font = this.TbxText.Font;
+            this.FontDialog.Font = this.TBXText.Font;
             DialogResult res = this.FontDialog.ShowDialog();
 
             if (res != DialogResult.Cancel)
             {
-                this.TbxText.Font = this.FontDialog.Font;
-                this.TbxText.ForeColor = this.FontDialog.Color;
+                this.TBXText.Font = this.FontDialog.Font;
+                this.TBXText.ForeColor = this.FontDialog.Color;
             }
         }
 
         private void TSMINew_Click(object sender, EventArgs e)
         {
             this.Filename = null;
-            this.TbxText.Clear();
+            this.TBXText.Clear();
         }
 
         private void TSMIAbout_Click(object sender, EventArgs e)
@@ -249,13 +251,13 @@ namespace TraitementFichier
 
         private void TSMIAppearance_Click(object sender, EventArgs e)
         {
-            this.ColorDlg.Color = this.TbxText.BackColor;
+            this.ColorDlg.Color = this.TBXText.BackColor;
 
             DialogResult res = this.ColorDlg.ShowDialog();
 
             if (res != DialogResult.Cancel)
             {
-                this.TbxText.BackColor = this.ColorDlg.Color;
+                this.TBXText.BackColor = this.ColorDlg.Color;
                 this.BackColor = this.ColorDlg.Color;
             }
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TraitementFichier
+namespace ArcNotepad
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace TraitementFichier
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmNotePad());
+            Application.Run(new FrmArcNotepad());
         }
     }
 }

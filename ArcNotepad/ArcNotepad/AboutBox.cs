@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TraitementFichier
+namespace ArcNotepad
 {
     partial class AboutBox : Form
     {

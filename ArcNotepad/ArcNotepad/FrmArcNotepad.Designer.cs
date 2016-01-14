@@ -1,6 +1,6 @@
-﻿namespace TraitementFichier
+﻿namespace ArcNotepad
 {
-    partial class FrmNotePad
+    partial class FrmArcNotepad
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNotePad));
-            this.TbxText = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArcNotepad));
+            this.TBXText = new System.Windows.Forms.TextBox();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.TSMIFile = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMINew = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,20 +53,20 @@
             this.SSInformations.SuspendLayout();
             this.SuspendLayout();
             // 
-            // TbxText
+            // TBXText
             // 
-            this.TbxText.AcceptsTab = true;
-            this.TbxText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TbxText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbxText.Location = new System.Drawing.Point(13, 32);
-            this.TbxText.Margin = new System.Windows.Forms.Padding(4);
-            this.TbxText.Multiline = true;
-            this.TbxText.Name = "TbxText";
-            this.TbxText.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TbxText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TbxText.Size = new System.Drawing.Size(813, 457);
-            this.TbxText.TabIndex = 0;
-            this.TbxText.TextChanged += new System.EventHandler(this.TbxText_TextChanged);
+            this.TBXText.AcceptsTab = true;
+            this.TBXText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TBXText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBXText.Location = new System.Drawing.Point(13, 32);
+            this.TBXText.Margin = new System.Windows.Forms.Padding(4);
+            this.TBXText.Multiline = true;
+            this.TBXText.Name = "TBXText";
+            this.TBXText.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TBXText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TBXText.Size = new System.Drawing.Size(813, 457);
+            this.TBXText.TabIndex = 0;
+            this.TBXText.TextChanged += new System.EventHandler(this.TBXText_TextChanged);
             // 
             // Menu
             // 
@@ -98,7 +98,7 @@
             // 
             // TSMINew
             // 
-            this.TSMINew.Image = global::TraitementFichier.Properties.Resources.document_empty;
+            this.TSMINew.Image = global::ArcNotepad.Properties.Resources.document_empty;
             this.TSMINew.Name = "TSMINew";
             this.TSMINew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.TSMINew.Size = new System.Drawing.Size(286, 26);
@@ -107,7 +107,7 @@
             // 
             // TSMIOpen
             // 
-            this.TSMIOpen.Image = global::TraitementFichier.Properties.Resources.page;
+            this.TSMIOpen.Image = global::ArcNotepad.Properties.Resources.page;
             this.TSMIOpen.Name = "TSMIOpen";
             this.TSMIOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.TSMIOpen.Size = new System.Drawing.Size(286, 26);
@@ -121,7 +121,7 @@
             // 
             // TSMISave
             // 
-            this.TSMISave.Image = global::TraitementFichier.Properties.Resources.page_save;
+            this.TSMISave.Image = global::ArcNotepad.Properties.Resources.page_save;
             this.TSMISave.Name = "TSMISave";
             this.TSMISave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.TSMISave.Size = new System.Drawing.Size(286, 26);
@@ -130,7 +130,7 @@
             // 
             // TSMISaveAs
             // 
-            this.TSMISaveAs.Image = global::TraitementFichier.Properties.Resources.save_as;
+            this.TSMISaveAs.Image = global::ArcNotepad.Properties.Resources.save_as;
             this.TSMISaveAs.Name = "TSMISaveAs";
             this.TSMISaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
@@ -165,7 +165,7 @@
             // 
             // TSMIFont
             // 
-            this.TSMIFont.Image = global::TraitementFichier.Properties.Resources.font;
+            this.TSMIFont.Image = global::ArcNotepad.Properties.Resources.font;
             this.TSMIFont.Name = "TSMIFont";
             this.TSMIFont.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.TSMIFont.Size = new System.Drawing.Size(221, 26);
@@ -174,7 +174,7 @@
             // 
             // TSMIAppearance
             // 
-            this.TSMIAppearance.Image = global::TraitementFichier.Properties.Resources.application_edit;
+            this.TSMIAppearance.Image = global::ArcNotepad.Properties.Resources.application_edit;
             this.TSMIAppearance.Name = "TSMIAppearance";
             this.TSMIAppearance.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.TSMIAppearance.Size = new System.Drawing.Size(221, 26);
@@ -189,7 +189,7 @@
             // TSMIForeground
             // 
             this.TSMIForeground.CheckOnClick = true;
-            this.TSMIForeground.Image = global::TraitementFichier.Properties.Resources.application_double;
+            this.TSMIForeground.Image = global::ArcNotepad.Properties.Resources.application_double;
             this.TSMIForeground.Name = "TSMIForeground";
             this.TSMIForeground.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.TSMIForeground.Size = new System.Drawing.Size(221, 26);
@@ -206,7 +206,7 @@
             // 
             // TSMIAbout
             // 
-            this.TSMIAbout.Image = global::TraitementFichier.Properties.Resources.information;
+            this.TSMIAbout.Image = global::ArcNotepad.Properties.Resources.information;
             this.TSMIAbout.Name = "TSMIAbout";
             this.TSMIAbout.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.TSMIAbout.Size = new System.Drawing.Size(230, 26);
@@ -240,21 +240,21 @@
             this.TSSLStatuForeground.Size = new System.Drawing.Size(135, 20);
             this.TSSLStatuForeground.Text = "Premier plan : false";
             // 
-            // FrmNotePad
+            // FrmArcNotepad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(826, 515);
             this.Controls.Add(this.SSInformations);
-            this.Controls.Add(this.TbxText);
+            this.Controls.Add(this.TBXText);
             this.Controls.Add(this.Menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Menu;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmNotePad";
+            this.Name = "FrmArcNotepad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Arcnose - NotePad";
+            this.Text = "ArcNotepad";
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
             this.SSInformations.ResumeLayout(false);
@@ -266,7 +266,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox TbxText;
+        private System.Windows.Forms.TextBox TBXText;
         private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem TSMIFile;
         private System.Windows.Forms.ToolStripMenuItem TSMIOpen;
