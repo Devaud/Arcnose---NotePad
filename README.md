@@ -3,6 +3,10 @@ Simple logiciel notepad pour windows qui a la particularité de mettre la fenêt
 
 ## Patch note
 
+### Version 1.3 - 28.01.2016
+- Bug fixed :
+  - L'emplacement du texte se redimensionne avec la fenêtre
+
 ### Version 1.2 - 14.01.2016
 - Renommage de tout le projet
 
