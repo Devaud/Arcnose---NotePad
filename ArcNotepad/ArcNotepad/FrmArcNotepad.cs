@@ -1,8 +1,8 @@
 ﻿/*
  *  Author      : Squibbles
  *  Description : Little notepad which can be put in the foreground
- *  Date        : 08.08.2016
- *  Version     : 1.1
+ *  Date        : 06.01.2016
+ *  Version     : 1.2
  */
 
 using System;
@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace ArcNotepad
 {
@@ -91,6 +94,32 @@ namespace ArcNotepad
             InitializeComponent();
             this.Foreground = false;
             this.InitDialog();
+
+            /*XmlDocument settingXML = new XmlDocument();
+            settingXML.Load(@"./config.xml");
+
+            XmlNode node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Red");
+            int red = Convert.ToInt16(node.InnerText);
+            node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Green");
+            int green = Convert.ToInt16(node.InnerText);
+            node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Blue");
+            int blue = Convert.ToInt16(node.InnerText);
+            this.TBXText.BackColor = Color.FromArgb(red, green, blue);
+            */
+
+            // Load the notepad settings
+            xmlManager settingsXml = new xmlManager(@"./settings.xml");
+            string red = settingsXml.readNode("/settings/background/Red");
+            string green = settingsXml.readNode("/settings/background/Green");
+            string blue = settingsXml.readNode("/settings/background/Green");
+            this.TBXText.BackColor = Color.FromArgb(Convert.ToInt16(red), Convert.ToInt16(green), Convert.ToInt16(blue));
+            this.BackColor = Color.FromArgb(Convert.ToInt16(red), Convert.ToInt16(green), Convert.ToInt16(blue));
+
+            string fontFamily = settingsXml.readNode("/settings/font/font-family");
+            string size = settingsXml.readNode("/settings/font/size");
+            Font f = new Font(fontFamily, (float)Convert.ToDouble(size));
+            this.TBXText.Font = f;
+
 
             // Get the parameters which past during the command execute
             string[] args = Environment.GetCommandLineArgs();

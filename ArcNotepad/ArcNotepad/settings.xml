@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <background>
+    <Red>255</Red>
+    <Green>255</Green>
+    <Blue>255</Blue>
+  </background>
+  <font>
+    <color>WindowText</color>
+    <size>12</size>
+    <font-family>Microsoft Sans Serif</font-family>
+    <fontstyle>None</fontstyle>
+  </font>
+</settings>
