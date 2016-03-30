@@ -95,29 +95,18 @@ namespace ArcNotepad
             this.Foreground = false;
             this.InitDialog();
 
-            /*XmlDocument settingXML = new XmlDocument();
-            settingXML.Load(@"./config.xml");
-
-            XmlNode node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Red");
-            int red = Convert.ToInt16(node.InnerText);
-            node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Green");
-            int green = Convert.ToInt16(node.InnerText);
-            node = settingXML.DocumentElement.SelectSingleNode("/settings/background/Blue");
-            int blue = Convert.ToInt16(node.InnerText);
-            this.TBXText.BackColor = Color.FromArgb(red, green, blue);
-            */
-
             // Load the notepad settings
             xmlManager settingsXml = new xmlManager(@"./settings.xml");
-            string red = settingsXml.readNode("/settings/background/Red");
-            string green = settingsXml.readNode("/settings/background/Green");
-            string blue = settingsXml.readNode("/settings/background/Green");
-            this.TBXText.BackColor = Color.FromArgb(Convert.ToInt16(red), Convert.ToInt16(green), Convert.ToInt16(blue));
-            this.BackColor = Color.FromArgb(Convert.ToInt16(red), Convert.ToInt16(green), Convert.ToInt16(blue));
 
-            string fontFamily = settingsXml.readNode("/settings/font/font-family");
-            string size = settingsXml.readNode("/settings/font/size");
-            Font f = new Font(fontFamily, (float)Convert.ToDouble(size));
+            // Load the color
+            int[] color = settingsXml.GetNodeColor("/settings/background");
+            this.TBXText.BackColor = Color.FromArgb(color[0], color[1], color[2]);
+            this.BackColor = Color.FromArgb(color[0], color[1], color[2]);
+
+
+            Font f = settingsXml.GetNodeFont("/settings/font"); // Load the font
+            int[] fontColor = settingsXml.GetNodeColor("/settings/font/color");
+            this.TBXText.ForeColor = Color.FromArgb(fontColor[0], fontColor[1], fontColor[2]);
             this.TBXText.Font = f;
 
 

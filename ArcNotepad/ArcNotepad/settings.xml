@@ -6,9 +6,18 @@
     <Blue>255</Blue>
   </background>
   <font>
-    <color>WindowText</color>
-    <size>12</size>
+    <color>
+      <Red>0</Red>
+      <Green>0</Green>
+      <Blue>0</Blue>
+    </color>
+    <size>10</size>
     <font-family>Microsoft Sans Serif</font-family>
-    <fontstyle>None</fontstyle>
+    <fontstyle>
+      <bold>false</bold>
+      <underline>false</underline>
+      <italic>false</italic>
+      <strikeout>false</strikeout>
+    </fontstyle>
   </font>
 </settings>
